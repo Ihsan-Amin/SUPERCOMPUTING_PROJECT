@@ -1,0 +1,14 @@
+#!/bin/bash
+module load miniforge3
+source /sciclone/apps/miniforge3-24.9.2-0/etc/profile.d/conda.sh
+conda create -n kaggleenv -y
+conda activate kaggleenv
+mamba install kaggle -y
+
+mkdir -p data/raw
+
+kaggle datasets download aelchimminut/fruits262
+mv fruits262.zip ./data/raw
+unzip ./data/raw/fruits262.zip -d ./data/raw
+
+
