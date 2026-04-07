@@ -5,12 +5,13 @@ conda create -n kaggleenv -y
 conda activate kaggleenv
 mamba install kaggle -y
 
-SHARED_DIR="sciclone/scr10/gzdata440"
+SHARED_DIR="/sciclone/scr10/gzdata440"
 mkdir -p data/raw
 mkdir -p "${SHARED_DIR}/fruitsdata"
 
-kaggle datasets download aelchimminut/fruits262 -p data/raw
+cd "${SHARED_DIR}"
+kaggle datasets download aelchimminut/fruits262
 
-unzip ./data/raw/fruits262.zip -d "${SHARED_DIR}/fruitsdata"
+unzip fruits262.zip -d "${SHARED_DIR}/fruitsdata"
 
 
