@@ -9,7 +9,7 @@ SHARED_DIR="/sciclone/scr10/gzdata440"
 
 mkdir -p "${SHARED_DIR}/fruitsdata"
 
-cd "${SHARED_DIR}"
+cd "${SHARED_DIR}/fruitsdata"
 kaggle datasets download aelchimminut/fruits262
 
 unzip fruits262.zip -d "${SHARED_DIR}/fruitsdata"
