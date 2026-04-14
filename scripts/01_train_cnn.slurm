@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=1-12:00:00          # 1.5 days (3 models sequentially)
+#SBATCH --time=12:00:00          # 12 hours (3 models sequentially)
 #SBATCH --mem=64G
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=mrmellors@wm.edu
