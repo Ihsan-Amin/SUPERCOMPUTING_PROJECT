@@ -9,7 +9,8 @@ import os
 import json
 import argparse
 
-DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata/output"
+DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata/output" 
+#mark for later
 
 # Paper benchmarks from Table VIII (52x64 RGB model)
 PAPER_BENCHMARKS = {
