@@ -31,17 +31,13 @@ module load miniforge3
 source /sciclone/apps/miniforge3-24.9.2-0/etc/profile.d/conda.sh
 
 # Create env on first run
-if ! conda env list | grep -q "fruitcnn"; then
-    echo "Creating conda environment..."
-    conda create -n fruitcnn python=3.11 -y
-fi
-conda activate fruitcnn
+conda activate kaggleenv
 
 # Install PyTorch with CUDA support
 # Check CUDA version: run 'nvidia-smi' or 'module avail cuda' on a GPU node
 # Adjust cu121 below to match (cu118 for CUDA 11.8, cu121 for 12.1, etc.)
-pip install --quiet torch torchvision --index-url https://download.pytorch.org/whl/cu121
-pip install --quiet numpy pillow
+mamba install -y pytorch torchvision torchaudio -c pytorch
+mamba install -y numpy pillow
 
 # If the above CUDA version doesn't match, fall back to auto-detect:
 # pip install --quiet torch torchvision
