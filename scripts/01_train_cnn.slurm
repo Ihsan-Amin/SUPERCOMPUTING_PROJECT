@@ -9,22 +9,8 @@
 #SBATCH --mail-user=mrmellors@wm.edu
 #SBATCH -o fruit_cnn_%j.out
 #SBATCH -e fruit_cnn_%j.err
-#
-# ┌─────────────────────────────────────────────────────────────────────┐
-# │ GPU PARTITION — UNCOMMENT ONE OF THESE BLOCKS                      │
-# │ Run 'sinfo -o "%P %G %N %l"' to see what's available to you       │
-# └─────────────────────────────────────────────────────────────────────┘
-#
-# Option A: astral (8× A30, 24GB each) — best for this workload
-##SBATCH --partition=astral
-##SBATCH --gres=gpu:1
-#
-# Option B: gulf (2× A40, 48GB each) — if astral is full
-##SBATCH --partition=gulf
-##SBATCH --gres=gpu:1
-#
-# Option C: bora CPU fallback (no GPU — VERY SLOW, not recommended)
-# Leave GPU lines commented out, it will auto-detect CPU mode
+#SBATCH --gpus=1
+
 
 # ─── Environment Setup ───────────────────────────────────────────────────────
 module load miniforge3
