@@ -1,0 +1,149 @@
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+
+Looking for: ['pytorch', 'torchvision', 'torchaudio']
+
+
+Pinned packages:
+  - python 3.14.*
+
+
+Could not solve for environment specs
+The following packages are incompatible
+└─ torchvision is installable with the potential options
+   ├─ torchvision [0.10.0|0.10.1|...|0.9.1] would require
+   │  └─ python >=3.6,<3.7.0a0 , which can be installed;
+   ├─ torchvision [0.10.0|0.10.1|...|0.9.1] would require
+   │  └─ python >=3.7,<3.8.0a0 , which can be installed;
+   ├─ torchvision [0.10.0|0.10.1|...|0.9.1] would require
+   │  └─ python >=3.8,<3.9.0a0 , which can be installed;
+   ├─ torchvision [0.10.0|0.10.1|...|0.9.1] would require
+   │  └─ python >=3.9,<3.10.0a0 , which can be installed;
+   ├─ torchvision [0.12.0|0.13.0|...|0.20.1] would require
+   │  └─ python >=3.10,<3.11.0a0 , which can be installed;
+   ├─ torchvision [0.14.0|0.14.1] would require
+   │  └─ pytorch-cuda 11.6.* , which requires
+   │     └─ cuda 11.6.* , which does not exist (perhaps a missing channel);
+   ├─ torchvision [0.14.0|0.14.1|0.15.0|0.15.2] would require
+   │  └─ pytorch-cuda 11.7.*  but there are no viable options
+   │     ├─ pytorch-cuda 11.7 would require
+   │     │  └─ cuda-cudart >=11.7,<11.8 , which does not exist (perhaps a missing channel);
+   │     └─ pytorch-cuda 11.7 would require
+   │        └─ cuda 11.7.* , which does not exist (perhaps a missing channel);
+   ├─ torchvision [0.15.0|0.15.2|...|0.20.1] would require
+   │  └─ pytorch-cuda 11.8.*  but there are no viable options
+   │     ├─ pytorch-cuda 11.8 would require
+   │     │  └─ cuda-cudart >=11.8,<12.0 , which does not exist (perhaps a missing channel);
+   │     └─ pytorch-cuda 11.8 would require
+   │        └─ cuda 11.8.* , which does not exist (perhaps a missing channel);
+   ├─ torchvision [0.15.2|0.16.0|...|0.20.1] would require
+   │  └─ python >=3.11,<3.12.0a0 , which can be installed;
+   ├─ torchvision [0.16.0|0.16.1|...|0.20.1] would require
+   │  └─ pytorch-cuda 12.1.* , which requires
+   │     └─ libcublas >=12.1.0.26,<12.1.3.1 , which does not exist (perhaps a missing channel);
+   ├─ torchvision [0.17.0|0.17.1|...|0.20.1] would require
+   │  └─ python >=3.12,<3.13.0a0 , which can be installed;
+   ├─ torchvision 0.6.1 would require
+   │  └─ python >=3.5,<3.6.0a0 , which can be installed;
+   └─ torchvision [0.10.0|0.10.1|...|0.9.1] conflicts with any installable versions previously reported.
+conda-forge/linux-64                                        Using cache
+conda-forge/noarch                                          Using cache
+pkgs/main/linux-64                                          Using cache
+pkgs/main/noarch                                            Using cache
+pkgs/r/linux-64                                             Using cache
+pkgs/r/noarch                                               Using cache
+Transaction
+
+  Prefix: /sciclone/home/tdfelton/.conda/envs/kaggleenv
+
+  Updating specs:
+
+   - numpy
+   - pillow
+   - ca-certificates
+   - certifi
+   - openssl
+
+
+  Package          Version  Build                Channel           Size
+─────────────────────────────────────────────────────────────────────────
+  Install:
+─────────────────────────────────────────────────────────────────────────
+
+  + libwebp-base     1.6.0  hd42ef1d_0           conda-forge     Cached
+  + zlib-ng          2.3.3  hceb46e0_1           conda-forge      123kB
+  + libjpeg-turbo  3.1.4.1  hb03c661_0           conda-forge      634kB
+  + libdeflate        1.25  h17f619e_0           conda-forge       73kB
+  + libpng          1.6.57  h421ea60_0           conda-forge      318kB
+  + pthread-stubs      0.4  hb9d3cd8_1002        conda-forge     Cached
+  + xorg-libxdmcp    1.1.5  hb03c661_1           conda-forge     Cached
+  + xorg-libxau     1.0.12  hb03c661_1           conda-forge     Cached
+  + lerc             4.1.0  hdb68285_0           conda-forge      262kB
+  + libgfortran5    15.2.0  h68bc16d_18          conda-forge     Cached
+  + libfreetype6    2.14.3  h73754d4_0           conda-forge      385kB
+  + libxcb          1.17.0  h8a09558_0           conda-forge     Cached
+  + libtiff          4.7.1  h9d88235_1           conda-forge      435kB
+  + libgfortran     15.2.0  h69a702a_18          conda-forge     Cached
+  + libfreetype     2.14.3  ha770c72_0           conda-forge        8kB
+  + openjpeg         2.5.4  h55fea9a_0           conda-forge      355kB
+  + lcms2             2.18  h0c24ade_0           conda-forge      250kB
+  + libopenblas     0.3.32  pthreads_h94d23a6_0  conda-forge        6MB
+  + pillow          12.2.0  py314h8ec4b1a_0      conda-forge        1MB
+  + libblas         3.11.0  6_h4a7cf45_openblas  conda-forge       19kB
+  + libcblas        3.11.0  6_h0358290_openblas  conda-forge       19kB
+  + liblapack       3.11.0  6_h47877c9_openblas  conda-forge       19kB
+  + numpy            2.4.3  py314h2b28147_0      conda-forge     Cached
+
+  Summary:
+
+  Install: 23 packages
+
+  Total download: 10MB
+
+─────────────────────────────────────────────────────────────────────────
+
+
+
+Looking for: ['numpy', 'pillow']
+
+
+Pinned packages:
+  - python 3.14.*
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+════════════════════════════════════════════════════════════
+Job ID:       64923
+Node:         as01
+CPUs:         16
+GPU:          0
+Data:         /sciclone/scr10/gzdata440/fruitsdata/Fruit-262
+Output:       /sciclone/scr10/gzdata440/fruitsdata/output
+Start:        Tue Apr 14 10:28:25 AM EDT 2026
+════════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════
+  MODEL 1/3: alexnet (paper replication)
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+  MODEL 2/3: alexnet_bn (improved)
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+  MODEL 3/3: resnet50 (transfer learning)
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+  COMPARISON SUMMARY
+════════════════════════════════════════════════════════════
+
+
+All done: Tue Apr 14 10:28:25 AM EDT 2026

@@ -7,6 +7,8 @@ mamba install kaggle -y
 
 SHARED_DIR="/sciclone/scr10/gzdata440"
 
+rm -rf "${SHARED_DIR}/fruitsdata"
+
 mkdir -p "${SHARED_DIR}/fruitsdata"
 
 cd "${SHARED_DIR}/fruitsdata"
