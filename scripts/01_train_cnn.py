@@ -413,7 +413,7 @@ def build_model(model_name, num_classes, device):
         )
         scheduler = ReduceLROnPlateau(
             optimizer, mode="min", factor=0.5, patience=10,
-            verbose=True, min_lr=1e-6,
+            min_lr=1e-6,
         )
 
     elif model_name == "resnet50":
