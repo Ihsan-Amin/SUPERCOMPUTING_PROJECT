@@ -7,8 +7,8 @@
 #SBATCH --mem=64G
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=mrmellors@wm.edu
-#SBATCH -o fruit_cnn_%j.out
-#SBATCH -e fruit_cnn_%j.err
+#SBATCH -o /sciclone/scr10/gzdata40/fruitsdata/logs/fruit_cnn_%j.out
+#SBATCH -e /sciclone/scr10/gzdata440/fruitsdata/logs/fruit_cnn_%j.err
 #SBATCH --gpus=1
 
 
