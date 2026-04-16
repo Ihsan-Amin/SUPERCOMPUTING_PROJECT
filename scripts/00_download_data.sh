@@ -8,9 +8,9 @@ mamba install kaggle -y
 SHARED_DIR="/sciclone/scr10/gzdata440"
 
 rm -rf "${SHARED_DIR}/fruitsdata"
-
+echo "removed fruitsdata folder"
 mkdir -p "${SHARED_DIR}/fruitsdata"
-
+echo "created fruitsdata folder"
 cd "${SHARED_DIR}/fruitsdata"
 kaggle datasets download aelchimminut/fruits262
 
