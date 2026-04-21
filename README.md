@@ -35,11 +35,20 @@ SUPERCOMPUTING_PROJECT/
 ```
 
 ```
-EXTERNAL_DIR/
-├── fruitsdata/
-│   ├── output/
-│       └── model_comparison.csv 
-└── README.md
+EXTERNAL_DIR/ # example, we used /sciclone/scr10/gzdata440/
+└── fruitsdata/
+    ├── Fruit-262/                  # dataset
+    └── output/
+        ├── model_comparison.csv
+        ├── alexnet/
+        │   ├── best_model.pth
+        │   ├── training_log.csv
+        │   ├── test_results.json
+        │   └── class_names.json
+        ├── alexnet_bn/
+        │   └── 
+        └── resnet50/
+            └── 
 ```
 
 ## Setup 
