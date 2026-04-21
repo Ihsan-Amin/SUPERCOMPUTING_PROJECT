@@ -83,5 +83,15 @@ echo ""
 python "${SCRIPT_DIR}/02_compare_models.py" \
     --output-dir "$OUTPUT_DIR"
 
+#TEST OUTPUT CHANGE
+REPORT_DIR="$HOME/SUPERCOMPUTING_PROJECT/outputs"
+mkdir -p "$REPORT_DIR"
+for model in alexnet alexnet_bn resnet50; do
+    mkdir -p "$REPORT_DIR/$model"
+    cp "$OUTPUT_DIR/$model/test_results.json"  "$REPORT_DIR/$model/" 2>/dev/null
+    cp "$OUTPUT_DIR/$model/training_log.csv"   "$REPORT_DIR/$model/" 2>/dev/null
+done
+cp "$OUTPUT_DIR/model_comparison.csv" "$REPORT_DIR/" 2>/dev/null
+
 echo ""
 echo "All done: $(date)"

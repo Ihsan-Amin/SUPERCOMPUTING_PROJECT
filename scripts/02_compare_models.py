@@ -8,6 +8,8 @@ formatted comparison table including paper benchmarks.
 import os
 import json
 import argparse
+#TEST OUTPUT CHANGE
+import shutil
 
 DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata/output" 
 #mark for later
@@ -27,6 +29,8 @@ PAPER_BENCHMARKS = {
 def main():
     parser = argparse.ArgumentParser(description="Compare Fruits-262 model results")
     parser.add_argument("--output-dir", type=str, default=DEFAULT_OUTPUT_DIR)
+    #TEST OUTPUT CHANGE
+    parser.add_argument("--report-dir", type=str, default=None)
     args = parser.parse_args()
 
     models = ["alexnet", "alexnet_bn", "resnet50"]
@@ -107,6 +111,13 @@ def main():
                     f"{r['batch_size']}\n")
 
     print(f"  Comparison CSV saved to: {csv_path}")
+
+    #TEST OUTPUT CHANGE
+    if args.report_dir:
+        os.makedirs(args.report_dir, exist_ok=True)
+        shutil.copy2(csv_path, os.path.join(args.report_dir, "model_comparison.csv"))
+        print(f"  Also copied to: {args.report_dir}")
+
     print()
 
 
