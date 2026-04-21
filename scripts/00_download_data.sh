@@ -1,9 +1,12 @@
 #!/bin/bash
 module load miniforge3
 source /sciclone/apps/miniforge3-24.9.2-0/etc/profile.d/conda.sh
-conda create -n kaggleenv -y
+mamba create -n kaggleenv -y -c pytorch -c nvidia -c conda-forge \
+    python=3.11 \
+    pytorch torchvision torchaudio pytorch-cuda=12.1 \
+    numpy pillow kaggle
+
 conda activate kaggleenv
-mamba install kaggle -y
 
 SHARED_DIR="/sciclone/scr10/gzdata440"
 
