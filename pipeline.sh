@@ -3,13 +3,13 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=12:00:00          # 12 hours (3 models sequentially)
+#SBATCH --time=24:00:00          # 24 hours (3 models sequentially)
 #SBATCH --mem=64G
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=mrmellors@wm.edu
 #SBATCH -o ./logs/fruit_cnn_%j.out
 #SBATCH -e ./logs/fruit_cnn_%j.err
-#SBATCH --gpus=1
+#SBATCH --gpus=2
 
 ##Download the data from kaggle user aelchimminut and create a conda environment with these packages: pytorch torchvision torchaudio numpy pillow kaggle, see .yml file for more specific information
 ./scripts/00_download_data.sh
