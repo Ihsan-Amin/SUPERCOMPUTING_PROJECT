@@ -84,7 +84,7 @@ python "${SCRIPT_DIR}/02_compare_models.py" \
     --output-dir "$OUTPUT_DIR"
 
 #TEST OUTPUT CHANGE
-REPORT_DIR="$HOME/SUPERCOMPUTING_PROJECT/outputs"
+REPORT_DIR="$HOME/SUPERCOMPUTING_PROJECT/output"
 mkdir -p "$REPORT_DIR"
 for model in alexnet alexnet_bn resnet50; do
     mkdir -p "$REPORT_DIR/$model"
