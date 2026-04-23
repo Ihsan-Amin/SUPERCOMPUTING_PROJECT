@@ -42,6 +42,7 @@ SUPERCOMPUTING_PROJECT/
 │   ├── 01_train_cnn.slurm      # Slurm Script for training
 │   └── 02_compare_models.py    # comparison
 ├── .gitignore
+├── environment.yml            # Conda environment 
 └── README.md
 ```
 
