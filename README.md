@@ -1132,3 +1132,9 @@ Minuț, M.-D. (2021). Fruits-262 [Data set]. Kaggle. https://www.kaggle.com/data
 
 Minuț, M.-D., & Iftene, A. (2021). Creating a dataset and models based on convolutional neural networks to improve fruit classification. In 2021 23rd International Symposium on Symbolic and Numeric Algorithms for Scientific Computing (SYNASC) (pp. 155–162). IEEE. https://doi.org/10.1109/SYNASC54541.2021.00035 
 
+He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR) (pp. 770–778). IEEE. https://doi.org/10.1109/CVPR.2016.90
+
+Deng, J., Dong, W., Socher, R., Li, L.-J., Li, K., & Fei-Fei, L. (2009). ImageNet: A large-scale hierarchical image database. In 2009 IEEE Conference on Computer Vision and Pattern Recognition (CVPR) (pp. 248–255). IEEE. https://doi.org/10.1109/CVPR.2009.5206848
+
+Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2017). ImageNet classification with deep convolutional neural networks. Communications of the ACM, 60(6), 84–90. https://doi.org/10.1145/3065386
+
