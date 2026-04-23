@@ -161,4 +161,3 @@ dependencies:
   - yaml=0.2.5
   - zlib-ng=2.3.3
   - zstd=1.5.7
-prefix: /sciclone/home/iamin01/.conda/envs/kaggleenv
