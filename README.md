@@ -69,12 +69,29 @@ EXTERNAL_DIR (we used /sciclone/scr10/gzdata440/)
 
 ## Setup 
 
-# Kaggle setup  
-# 
+### Kaggle setup  
+We use the kaggle python package in `00_download_data.sh` to download the dataset. 
+The download commandused `kaggle datasets download aelchimminut/fruits262` might require Kaggle authentication on different machines, but it worked without authentication on the WM cluster. 
+Follow instructions here for setting up kaggle on different machines: 
+https://github.com/Kaggle/kaggle-cli 
+https://www.kaggle.com/docs/api 
+
+### Running Pipeline 
+
+If you are running this pipeline on a different machine or HPC cluster, you must update the hardcoded paths before execution:
+
+1. Change `SHARED_DIR` in `scripts/00_download_data.sh` and `scripts/01_train_cnn.slurm` to point to a folder on a drive with at least 15GB of free space
+2. Change `DEFAULT_DATA_DIR` and `DEFAULT_OUTPUT_DIR` in `scripts/01_train_cnn.py` and `scripts/02_compare_models.py` to match the new `SHARED_DIR` paths.
+3. Change `SCRIPT_DIR` and `REPORT_DIR` in `scripts/01_train_cnn.slurm` to point to cloned repository.
+4. In `pipeline.sh`, update `#SBATCH --mail-user=` to your email address 
+5. Run `mkdir logs` in root directory before submitting the SLURM job, as SLURM requires the output directory to exist.
+6. Run `sbatch pipeline.sh`
 
 ## Scripts / Code 
 
 ## Script 1 - scripts/00_download_data.sh
+
+Creates a conda environment (`kaggleenv`) with PyTorch and dependencies, then downloads and extracts the Fruits-262 dataset from Kaggle. The dataset is saved to `EXTERNAL_DIR/fruitsdata/Fruit-262/`.
 
 ```bash
 
@@ -115,6 +132,8 @@ rm fruits262.zip
 ```
 
 ## Script 2 - scripts/01_train_cnn.py
+
+Defines three CNN architectures (alexnet, alexnet_bn, resnet50) and handles training, validation, and test evaluation. Takes the Fruit-262 image directory as input and outputs `best_model.pth`, `training_log.csv`, `test_results.json`, and `class_names.json` to `EXTERNAL_DIR/fruitsdata/output/<model_name>/`.
 
 ```python
 
@@ -829,6 +848,8 @@ if __name__ == "__main__":
 
 ## Script 3 - scripts/01_train_cnn.slurm
 
+Orchestrates sequential training of all three models by calling `01_train_cnn.py` three times, then runs `02_compare_models.py` and copies deliverable outputs (`test_results.json`, `training_log.csv`, `model_comparison.csv`) to the project's `output/` folder.
+
 ```bash
 
 #!/bin/bash
@@ -917,6 +938,8 @@ echo "All done: $(date)"
 ```
 
 ## Script 4 - scripts/02_compare_models.py
+
+Reads `test_results.json` from each model's output directory, prints a formatted comparison table with top-1/5/10 accuracy alongside the paper's benchmarks, and saves `model_comparison.csv` to the output directory.
 
 ```python
 #!/usr/bin/env python3
@@ -1048,6 +1071,8 @@ if __name__ == "__main__":
 
 ## Script 5 - pipeline.sh
 
+SLURM entry point that runs the full pipeline end-to-end. Submits with `sbatch pipeline.sh` and sequentially calls `00_download_data.sh` then `01_train_cnn.slurm`. SLURM logs are saved to `./logs/`.
+
 ```bash
 
 #!/bin/bash
@@ -1071,3 +1096,12 @@ if __name__ == "__main__":
 ./scripts/01_train_cnn.slurm
 
 ```
+
+## Results
+
+## Works Cited
+
+Minuț, M.-D. (2021). Fruits-262 [Data set]. Kaggle. https://www.kaggle.com/datasets/aelchimminut/fruits262
+
+Minuț, M.-D., & Iftene, A. (2021). Creating a dataset and models based on convolutional neural networks to improve fruit classification. In 2021 23rd International Symposium on Symbolic and Numeric Algorithms for Scientific Computing (SYNASC) (pp. 155–162). IEEE. https://doi.org/10.1109/SYNASC54541.2021.00035 
+
