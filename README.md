@@ -116,7 +116,7 @@ rm fruits262.zip
 
 ## Script 2 - scripts/01_train_cnn.py
 
-```bash
+```python
 
 #!/usr/bin/env python3
 """
@@ -918,7 +918,7 @@ echo "All done: $(date)"
 
 ## Script 4 - scripts/02_compare_models.py
 
-```bash
+```python
 #!/usr/bin/env python3
 """
 Compare test results from all three Fruits-262 models.
