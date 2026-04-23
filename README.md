@@ -89,6 +89,29 @@ If you are running this pipeline on a different machine or HPC cluster, you must
 5. Run `mkdir logs` in root directory before submitting the SLURM job, as SLURM requires the output directory to exist.
 6. Run `sbatch pipeline.sh`
 
+### Environment
+
+`environment.yml` is in the repository root. This file was exported from the WM cluster and documents the package versions used for the final runs.
+
+Key tool versions:
+- Python 3.11.15
+- PyTorch 2.5.1
+- torchvision 0.20.1
+- torchaudio 2.5.1
+- pytorch-cuda 12.1
+- NumPy 2.4.3
+- Pillow 12.2.0
+- Kaggle 2.0.1
+
+The environment can be created via:
+
+```bash
+module load miniforge3
+source /sciclone/apps/miniforge3-24.9.2-0/etc/profile.d/conda.sh
+mamba env create -f environment.yml
+conda activate kaggleenv
+```
+
 ## Scripts / Code 
 
 ## Script 1 - scripts/00_download_data.sh
