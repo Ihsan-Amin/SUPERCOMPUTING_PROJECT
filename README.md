@@ -1,6 +1,7 @@
 # SUPERCOMPUTING_PROJECT 
 
-This project trains and outputs benchmarks on 3 convolutional neural network approaches for the [Fruits-262](https://www.kaggle.com/datasets/aelchimminut/fruits262) dataset. The pipeline begins by downloading the dataset, 
+This project trains and outputs benchmarks on 3 convolutional neural network approaches for the [Fruits-262](https://www.kaggle.com/datasets/aelchimminut/fruits262) dataset. The pipeline begins by downloading the dataset, sequentially trains three different CNN architectures ( AlexNet replication from the dataset authors, a modified AlexNet with larger image resolutions, and a fine-tuned ResNet50). Lastly, it generates a comparison of all 3 models.
+
 
 ## Pipeline 
 
@@ -1097,7 +1098,9 @@ SLURM entry point that runs the full pipeline end-to-end. Submits with `sbatch p
 
 ```
 
-## Results
+### Results
+in our outputs we found 
+
 
 ## Works Cited
 
