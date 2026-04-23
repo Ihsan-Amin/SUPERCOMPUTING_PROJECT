@@ -1,6 +1,6 @@
 # SUPERCOMPUTING_PROJECT 
 
-This project trains and outputs benchmarks on 3 convolutional neural network approaches for the [Fruits-262](https://www.kaggle.com/datasets/aelchimminut/fruits262) dataset. The pipeline begins by downloading the dataset, sequentially trains three different CNN architectures ( AlexNet replication from the dataset authors, a modified AlexNet with larger image resolutions, and a fine-tuned ResNet50). Lastly, it generates a comparison of all 3 models.
+This project trains and outputs benchmarks on 3 convolutional neural network approaches for the [Fruits-262](https://www.kaggle.com/datasets/aelchimminut/fruits262) dataset which contains 227000 images of 262 different fruits. The pipeline begins by downloading the dataset, trains 3  CNN architectures (an AlexNet from the dataset authors, a modified AlexNet (larger image resolutions batch normalization and lr scheduling), and a fine-tuned ResNet50). Lastly, it generates a comparison of all 3 models.
 
 
 ## Pipeline 
@@ -80,7 +80,7 @@ https://www.kaggle.com/docs/api
 
 ### Running Pipeline 
 
-If you are running this pipeline on a different machine or HPC cluster, you must update the hardcoded paths before execution:
+If you are running this pipeline on a different machine or HPC cluster update the hardcoded paths before running:
 
 1. Change `SHARED_DIR` in `scripts/00_download_data.sh` and `scripts/01_train_cnn.slurm` to point to a folder on a drive with at least 15GB of free space
 2. Change `DEFAULT_DATA_DIR` and `DEFAULT_OUTPUT_DIR` in `scripts/01_train_cnn.py` and `scripts/02_compare_models.py` to match the new `SHARED_DIR` paths.
