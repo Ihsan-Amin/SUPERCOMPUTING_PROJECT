@@ -2,8 +2,8 @@
 #SBATCH --job-name=fruit_cnn
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --time=24:00:00          # 24 hours (3 models sequentially)
+#SBATCH --cpus-per-task=32
+#SBATCH --time=48:00:00          # 48 hours mainly because deleting any reference to previous data takes an obnoxiously long time, training 3 CNNs sequentially also takes a long time
 #SBATCH --mem=64G
 #SBATCH --mail-type=FAIL,BEGIN,END
 #SBATCH --mail-user=mrmellors@wm.edu
