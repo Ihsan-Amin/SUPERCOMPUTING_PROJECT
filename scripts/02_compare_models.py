@@ -11,7 +11,7 @@ import argparse
 #TEST OUTPUT CHANGE
 import shutil
 
-DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata/output" 
+DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata2/output"
 #mark for later
 
 # Paper benchmarks from Table VIII (52x64 RGB model)

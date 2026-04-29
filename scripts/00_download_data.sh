@@ -15,19 +15,20 @@ conda activate kaggleenv
 
 ##Define necessary paths
 SHARED_DIR="/sciclone/scr10/gzdata440"
+DATA_ROOT="${SHARED_DIR}/fruitsdata2"
 
 ##Remove any leftover fruit data from previous incomplete runs
-rm -rf "${SHARED_DIR}/fruitsdata"
-echo "removed fruitsdata folder"
+rm -rf "${DATA_ROOT}"
+echo "removed fruitsdata2 folder"
 
 ##Recreate the folder structure for storing training data
-mkdir -p "${SHARED_DIR}/fruitsdata"
-echo "created fruitsdata folder"
-cd "${SHARED_DIR}/fruitsdata"
+mkdir -p "${DATA_ROOT}"
+echo "created fruitsdata2 folder"
+cd "${DATA_ROOT}"
 
 ##Download the data from github user 'aelchimminut', unzip it and remove leftover junk files
 kaggle datasets download aelchimminut/fruits262
 
-unzip fruits262.zip -d "${SHARED_DIR}/fruitsdata"
+unzip fruits262.zip -d "${DATA_ROOT}"
 
 rm fruits262.zip

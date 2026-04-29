@@ -6,7 +6,7 @@ to Improve Fruit Classification" (SYNASC 2021)
 
 Models:
   1. alexnet       — Paper replication (Table VII FTP), 52×64, from scratch
-  2. alexnet_bn    — Improved: + BatchNorm + LR scheduling + AdamW, 104×128
+  2. alexnet_bn    — Improved: + BatchNorm + LR scheduling + AdamW, 52x64 safe rerun default
   3. resnet50      — Transfer learning from ImageNet, 224×224
 
 Usage:
@@ -35,13 +35,13 @@ import numpy as np
 # Configuration defaults
 # ═══════════════════════════════════════════════════════════════════════════════
 
-DEFAULT_DATA_DIR = "/sciclone/scr10/gzdata440/fruitsdata/Fruit-262"
-DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata/output"
+DEFAULT_DATA_DIR = "/sciclone/scr10/gzdata440/fruitsdata2/Fruit-262"
+DEFAULT_OUTPUT_DIR = "/sciclone/scr10/gzdata440/fruitsdata2/output"
 
 # Per-model defaults: (height, width, epochs, batch_size, learning_rate)
 MODEL_DEFAULTS = {
     "alexnet":    {"h": 64,  "w": 52,  "epochs": 200, "bs": 256, "lr": 2.5e-4},
-    "alexnet_bn": {"h": 128, "w": 104, "epochs": 150, "bs": 128, "lr": 1e-3},
+    "alexnet_bn": {"h": 64,  "w": 52,  "epochs": 150, "bs": 256, "lr": 1e-3},
     "resnet50":   {"h": 224, "w": 224, "epochs": 50,  "bs": 64,  "lr": 1e-4},
 }
 
@@ -298,17 +298,25 @@ def get_data_loaders(data_dir, img_h, img_w, batch_size, num_workers,
 
     pin = torch.cuda.is_available()
 
+    loader_kwargs = {
+        "num_workers": num_workers,
+        "pin_memory": pin,
+    }
+    if num_workers > 0:
+        loader_kwargs.update({
+            "persistent_workers": True,
+            "prefetch_factor": 4,
+        })
+
     train_loader = DataLoader(
         train_ds, batch_size=batch_size, shuffle=True,
-        num_workers=num_workers, pin_memory=pin, drop_last=True,
+        drop_last=True, **loader_kwargs,
     )
     val_loader = DataLoader(
-        val_ds, batch_size=batch_size, shuffle=False,
-        num_workers=num_workers, pin_memory=pin,
+        val_ds, batch_size=batch_size, shuffle=False, **loader_kwargs,
     )
     test_loader = DataLoader(
-        test_ds, batch_size=batch_size, shuffle=False,
-        num_workers=num_workers, pin_memory=pin,
+        test_ds, batch_size=batch_size, shuffle=False, **loader_kwargs,
     )
 
     return train_loader, val_loader, test_loader, full_dataset.classes
@@ -453,7 +461,7 @@ def main():
         epilog="""
 Models:
   alexnet      Paper replication (Table VII), 52x64, Adam, no scheduling
-  alexnet_bn   + BatchNorm + LR scheduling + AdamW, 104x128
+  alexnet_bn   + BatchNorm + LR scheduling + AdamW, 52x64 safe rerun default
   resnet50     Transfer learning (ImageNet -> Fruits-262), 224x224
         """,
     )
@@ -461,19 +469,25 @@ Models:
                         choices=["alexnet", "alexnet_bn", "resnet50"])
     parser.add_argument("--data-dir", type=str, default=DEFAULT_DATA_DIR)
     parser.add_argument("--output-dir", type=str, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--img-h", type=int, default=None,
+                        help="Override input image height")
+    parser.add_argument("--img-w", type=int, default=None,
+                        help="Override input image width")
     parser.add_argument("--epochs", type=int, default=None,
                         help="Override default epochs for chosen model")
     parser.add_argument("--batch-size", type=int, default=None)
     parser.add_argument("--lr", type=float, default=None)
     parser.add_argument("--workers", type=int, default=NUM_WORKERS)
+    parser.add_argument("--allow-cpu", action="store_true",
+                        help="Allow CPU training instead of failing when CUDA is unavailable")
     parser.add_argument("--resume", type=str, default=None,
                         help="Path to checkpoint to resume training")
     args = parser.parse_args()
 
     # ── Resolve per-model defaults ───────────────────────────────────────
     defaults = MODEL_DEFAULTS[args.model]
-    img_h      = defaults["h"]
-    img_w      = defaults["w"]
+    img_h      = args.img_h or defaults["h"]
+    img_w      = args.img_w or defaults["w"]
     epochs     = args.epochs     or defaults["epochs"]
     batch_size = args.batch_size or defaults["bs"]
     lr         = args.lr         or defaults["lr"]
@@ -483,19 +497,26 @@ Models:
     os.makedirs(output_dir, exist_ok=True)
 
     # ── Device ───────────────────────────────────────────────────────────
-    if torch.cuda.is_available():
+    has_cuda = torch.cuda.is_available()
+    if has_cuda:
         device = torch.device("cuda")
+        torch.backends.cudnn.benchmark = True
     else:
         device = torch.device("cpu")
         print("=" * 60)
-        print("WARNING: No GPU detected — training on CPU will be SLOW.")
+        print("WARNING: No GPU detected - training on CPU will be SLOW.")
         print("  Submit to a GPU partition instead:")
         print("    #SBATCH --partition=astral   (8x A30, 24GB)")
         print("    #SBATCH --gres=gpu:1")
         print("  Check available: sinfo -o '%P %G %N %l'")
         print("=" * 60)
+        if not args.allow_cpu:
+            raise SystemExit(
+                "CUDA is unavailable, so aborting before a slow CPU run. "
+                "Pass --allow-cpu only if this is intentional."
+            )
 
-    use_amp = torch.cuda.is_available()
+    use_amp = has_cuda
 
     # ── Print config ─────────────────────────────────────────────────────
     print(f"\n{'='*60}")
