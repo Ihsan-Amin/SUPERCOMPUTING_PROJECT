@@ -9,7 +9,7 @@
 #SBATCH --mail-user=mrmellors@wm.edu
 #SBATCH -o ./logs/fruit_cnn_%j.out
 #SBATCH -e ./logs/fruit_cnn_%j.err
-#SBATCH --gpus=2
+#SBATCH --gpus=1
 
 ##Download the data from kaggle user aelchimminut and create a conda environment with these packages: pytorch torchvision torchaudio numpy pillow kaggle, see .yml file for more specific information
 ./scripts/00_download_data.sh

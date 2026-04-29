@@ -506,7 +506,7 @@ Models:
         print("=" * 60)
         print("WARNING: No GPU detected - training on CPU will be SLOW.")
         print("  Submit with a GPU request instead:")
-        print("    #SBATCH --gpus=2")
+        print("    #SBATCH --gpus=1")
         print("  Check available: sinfo -o '%P %G %N %l'")
         print("=" * 60)
         if not args.allow_cpu:

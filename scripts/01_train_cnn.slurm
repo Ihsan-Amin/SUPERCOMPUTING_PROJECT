@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=32
 #SBATCH --time=48:00:00
 #SBATCH --mem=64G
-#SBATCH --gpus=2
+#SBATCH --gpus=1
 #SBATCH -o ./logs/fruit_cnn_train_%j.out
 #SBATCH -e ./logs/fruit_cnn_train_%j.err
 
