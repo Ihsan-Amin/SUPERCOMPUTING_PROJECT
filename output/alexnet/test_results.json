@@ -1,0 +1,18 @@
+{
+  "model": "alexnet",
+  "resolution": "52x64",
+  "best_epoch": 186,
+  "test_loss": 1.834967644833261,
+  "test_top1": 61.76822512740971,
+  "test_top5": 82.30445380013295,
+  "test_top10": 88.07445158431199,
+  "best_val_acc": 61.14299643229109,
+  "total_params": 6954886,
+  "trainable_params": 6954886,
+  "training_hours": 1.26397085249424,
+  "epochs_trained": 200,
+  "batch_size": 256,
+  "initial_lr": 0.00025,
+  "optimizer": "Adam",
+  "scheduler": "None"
+}

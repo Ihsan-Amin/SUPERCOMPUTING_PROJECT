@@ -1,0 +1,18 @@
+{
+  "model": "resnet50",
+  "resolution": "224x224",
+  "best_epoch": 49,
+  "test_loss": 0.7367531718421664,
+  "test_top1": 84.63549745180589,
+  "test_top5": 96.38821183248393,
+  "test_top10": 97.70440948371372,
+  "best_val_acc": 84.42617501717375,
+  "total_params": 24691526,
+  "trainable_params": 24691526,
+  "training_hours": 3.3619400896628697,
+  "epochs_trained": 50,
+  "batch_size": 64,
+  "initial_lr": 0.0001,
+  "optimizer": "AdamW",
+  "scheduler": "CosineAnnealingWarmRestarts"
+}

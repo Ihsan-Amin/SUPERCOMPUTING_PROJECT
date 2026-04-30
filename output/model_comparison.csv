@@ -1,0 +1,4 @@
+model,resolution,test_top1,test_top5,test_top10,params,hours,optimizer,scheduler,epochs,batch_size
+alexnet,52x64,61.7682,82.3045,88.0745,6954886,1.2640,Adam,None,200,256
+alexnet_bn,52x64,72.3909,89.4970,93.1044,6174470,1.0419,AdamW,ReduceLROnPlateau,150,256
+resnet50,224x224,84.6355,96.3882,97.7044,24691526,3.3619,AdamW,CosineAnnealingWarmRestarts,50,64
