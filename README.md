@@ -1,4 +1,5 @@
-# Supercomputing Project: Fruits-262 CNN Benchmark
+# Supercomputing Project: Fruits-262
+<img width="440" height="220" alt="image" src="https://github.com/user-attachments/assets/3caa1ff9-b929-4539-97ec-fe7cb53aa347" />
 
 This project trains and benchmarks three convolutional neural network architectures on the [Fruits-262](https://www.kaggle.com/datasets/aelchimminut/fruits262) dataset (227,000 images across 262 fruit classes). The pipeline downloads the dataset, trains three models, produces a side-by-side comparison table, and renders the comparison as an SVG chart.
 
