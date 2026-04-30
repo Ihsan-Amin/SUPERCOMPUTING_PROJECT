@@ -80,6 +80,10 @@ echo ""
 python "${SCRIPT_DIR}/02_compare_models.py" \
     --output-dir "$OUTPUT_DIR"
 
+python "${SCRIPT_DIR}/03_plot_model_comparison.py" \
+    --csv "$OUTPUT_DIR/model_comparison.csv" \
+    --out "$OUTPUT_DIR/model_comparison_graph.svg"
+
 #TEST OUTPUT CHANGE
 REPORT_DIR="$HOME/SUPERCOMPUTING_PROJECT/output"
 mkdir -p "$REPORT_DIR"
@@ -89,6 +93,7 @@ for model in alexnet alexnet_bn resnet50; do
     cp "$OUTPUT_DIR/$model/training_log.csv"   "$REPORT_DIR/$model/" 2>/dev/null
 done
 cp "$OUTPUT_DIR/model_comparison.csv" "$REPORT_DIR/" 2>/dev/null
+cp "$OUTPUT_DIR/model_comparison_graph.svg" "$REPORT_DIR/" 2>/dev/null
 
 echo ""
 echo "All done: $(date)"
